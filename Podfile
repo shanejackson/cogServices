@@ -6,7 +6,8 @@ target ‘CognitiveAssignment’ do
   use_frameworks!
 
   # Pods for Cartoon2
-    pod 'Alamofire', '~> 4.3'
+    pod 'Alamofire', '~> 4.3’
+    pod 'Alamofire-Synchronous', '~> 4.0’
     pod 'SwiftyJSON'
 
 end

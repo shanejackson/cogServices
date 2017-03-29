@@ -51,8 +51,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let cognitiveServices = CognitiveService()
+        var cognitiveServices = CognitiveService()
         cognitiveServices.test()
+        
+        
+        //checkIfUserExistsInDB("string") { (info) in
+        //    print(info)
+        //}
+        
+        print(cognitiveServices.getAges())
+        print(cognitiveServices.getGenders())
     }
     
     override func didReceiveMemoryWarning() {
