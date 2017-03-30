@@ -9,5 +9,6 @@ target ‘CognitiveAssignment’ do
     pod 'Alamofire', '~> 4.3’
     pod 'Alamofire-Synchronous', '~> 4.0’
     pod 'SwiftyJSON'
+   
 
 end

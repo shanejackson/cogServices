@@ -7,16 +7,16 @@
 //
 
 import UIKit
-
 //typealias AnalyzeImageRequestObject = (resource: Any, visualFeatures: [AnalyzeImage.AnalyzeImageVisualFeatures])
 
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    
     var myAge: Int?
     var myGender: String?
-    
     @IBOutlet weak var myImageView: UIImageView!
+    typealias FinishedDownload  = () -> ()
 //    let computerVisionKey = "73c13ba583d94b34979e60f2c4043c6d"
 //    //let faceKey = "a4b9225a259f441983a4d69cdca16245"
 //    
@@ -32,7 +32,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func selectButtonTapped(_ sender: Any) {
         let myPickerController = UIImagePickerController()
         myPickerController.delegate = self;
-        myPickerController.sourceType = UIImagePickerControllerSourceType.camera
+        myPickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
         // Think we can simply use this for camera if we want to
         //         myPickerController.sourceType = UIImagePickerControllerSourceType.camera
         self.present(myPickerController, animated: true, completion: nil)
@@ -45,7 +45,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         } else{
             print("Something went wrong")
         }
-        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -53,21 +52,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewDidLoad()
         var cognitiveServices = CognitiveService()
         cognitiveServices.test()
-        
-        
-        //checkIfUserExistsInDB("string") { (info) in
-        //    print(info)
-        //}
-        
-        print(cognitiveServices.getAges())
-        print(cognitiveServices.getGenders())
+        myImageView.image = UIImage(named: "test")
+
+        let when = DispatchTime.now() + 5 // change 2 to desired number of seconds
+        DispatchQueue.main.asyncAfter(deadline: when) {
+            // Your code with delay
+            print("delay`")
+            print(cognitiveServices.getAges())
+            print(cognitiveServices.getGenders())
+        }
+
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+ 
 }
 
 
